@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+</head>
+{% extends 'base.html' %}
+
+<body>
+    <header id="cabecalho-principal">
+        <nav id="navegacao-principal">
+             <a href="{% url 'index' %}"><p>WTF</p></a>
+            <ul>
+                <li><a href="{% url 'about' %}">Sobre</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main id="conteiner-principal">
+        {% block title %}
+            Página Inicial
+        {% endblock title %}
+
+        {% block content %}
+            <h1><i>Watch that film!</i></h1>
+            <p>A Página para Comunidade Resenhadora de Filmes</p>
+        {% endblock content %}
+    </main>
+    <footer id="rodape-principal">
+        <p>
+            <small>Copyright 2021</small>
+        </p>
+    </footer>
+</body>
+
+</html>
