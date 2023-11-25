@@ -11,6 +11,7 @@
     <li>Ano de Lançamento: {{ flower.release_year }}</li>
     <li><a href="{% url 'flowers:update' flower.id %}">Editar</a></li>
     <li><a href="{% url 'flowers:delete' flower.id %}">Apagar</a></li>
+    <li><a href="{% url 'flowers:detail' flower.id %}">Details</a></li>
   </ul>
 </section>
 <hr>
@@ -36,11 +37,11 @@
     </ul>
     
     <hr>
-            <li>Ano de Lançamento: {{ flower.release_year }} </li>
+        <li>Ano de Lançamento: {{ flower.release_year }} </li>
         {% if flower.list_set.all %}
             <li>Incluso nas listas: {{ flower.list_set.all|join:", " }} </li>
         {% endif %}
-    <a href="{% url 'flowers:review' flower.pk %}"><button>Crie sua Resenha</button></a>
+        <a href="{% url 'flowers:review' flower.pk %}"><button>Crie sua Resenha</button></a>
 
 <section class="dados-de-filme">
     <img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}">

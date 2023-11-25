@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from django.http import HttpResponse
 from .temp_data import flower_data
 
@@ -16,7 +14,7 @@ from django.views import generic
 def detail_flower(request, flower_id):
     flower = get_object_or_404(Flower, pk=flower_id)
     context = {'flower': flower}
-    return render(request, 'flowers/detail.html', context)
+    return render(request, 'detail.html', context)
 
 class FlowerListView(generic.ListView):
     model = Flower
@@ -104,6 +102,9 @@ def create_review(request, flower_id):
 class ListListView(generic.ListView):
     model = List
     template_name = 'flowers/lists.html'
+    def list_movies(request):
+        context = {"movie_list": movie_data}
+        return render(request, 'movies/index.html', context)
 
 class ListCreateView(generic.CreateView):
     model = List
