@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Todos os Filmes</h2>
+<section>
+  <p>
+    Muitos resultados? <a href="{% url 'flowers:search' %}">Buscar Filmes</a>
+  </p>
+  <p>
+    Não encontrou o filme?
+    <a href="{% url 'flowers:create' %}">Adicionar Novo Filme</a>
+  </p>
+</section>
+{% endblock %}
+
+{% if flower_list %}
+<section class="lista-de-cards">
+  {% for flower in flower_list %}
+  <article class="card">
+    <a href="{% url 'flowers:detail' flower.id %}"> <!-- modifique esta linha -->
+        <img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name }}" />
+    </a>
+    <p>{{ flower.name }} ({{ flower.release_year }})</p>
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
