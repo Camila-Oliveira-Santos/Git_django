@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Inserir Novo Filme</h2>
+<h2>Inserir Nova Flor</h2>
 <form method="POST" action="{% url 'flowers:create' %}">
   {% csrf_token %}
   <p>
-    <label for="id_name">Título:</label>
+    <label for="id_name">Nome:</label>
     <input type="text" name="name" id="id_name" />
   </p>
   <p>
-    <label for="id_release_year">Ano de Lançamento:</label>
-    <input type="number" name="release_year" id="id_release_year" />
+    <label for="id_especie">Espécie:</label>
+    <input type="number" name="especie" id="id_especie" />
   </p>
   <p>
     <label for="id_poster_url">URL do Poster:</label>

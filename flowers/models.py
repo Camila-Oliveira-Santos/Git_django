@@ -4,12 +4,12 @@ from django.conf import settings
 # Create your models here.
 class Flower(models.Model):
     name = models.CharField(max_length=255)
-    release_year = models.IntegerField()
+    especie = models.IntegerField()
     poster_url = models.URLField(max_length=200, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.name} ({self.release_year})'
+        return f'{self.name} ({self.especie})'
 
 class Review(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,

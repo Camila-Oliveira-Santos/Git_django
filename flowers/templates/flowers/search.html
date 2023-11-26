@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Busca de Filmes por Nome</h2>
+<h2>Busca de Flores por Nome</h2>
 <form action="{% url 'flowers:search' %}">
     <p>
-        <label for="id_query">Título:</label>
+        <label for="id_query">Nome:</label>
         <input type="text" name="query" id="id_query" />
     </p>
     <button type="submit">Buscar</button>
@@ -17,12 +17,12 @@
     {% for flower in flower_list %}
     <article class="card">
         <img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}">
-        <p>{{ flower.name }} ({{ flower.release_year }})</p>
+        <p>{{ flower.name }} ({{ flower.especie }})</p>
     </article>
     {% endfor %}
 </section>
 {% else %}
-<p>Não foi encontrado nenhum filme para a busca.</p>
+<p>Não foi encontrada nenhuma flor para a busca.</p>
 {% endif %}
 
 {% endblock content %}

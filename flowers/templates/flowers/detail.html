@@ -1,12 +1,13 @@
 {% extends 'base.html' %} {% block title %} {{ flower.name }} ({{
-flower.release_year }} {% endblock title %} {% block content %}
-<h2>Detalhes do Filme {{ flower.name }} ({{ flower.release_year }})</h2>
+flower.especie }} {% endblock title %} {% block content %}
+<h2>Detalhes da Flor: {{ flower.name }} ({{ flower.especie }})</h2>
 
 <section class="dados-de-filme">
   <img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}" />
   <ul>
     <li>Nome: {{ flower.name }}</li>
-    <li>Ano de Lançamento: {{ flower.release_year }}</li>
+    <li>Espécie: {{ flower.especie }}</li>
+    <li>Curiosodades: {{ flower.especie }}</li>
   </ul>
 </section>
 

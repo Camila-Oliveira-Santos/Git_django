@@ -4,10 +4,10 @@
 <section class="lista-de-cards">
   {% for flower in flower_list %}
   <article class="card">
-    <a href="{% url 'flowers:detail' flower.id %}"
+    <a href="{% url 'flowers:detail' forloop.counter %}"
       ><img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}"
     /></a>
-    <p>{{ flower.name }} ({{ flower.release_year }})</p>
+    <p>{{ flower.name }} ({{ flower.especie }})</p>
   </article>
   {% endfor %}
 </section>

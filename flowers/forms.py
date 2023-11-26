@@ -7,12 +7,12 @@ class FlowerForm(ModelForm):
         model = Flower
         fields = [
             'name',
-            'release_year',
+            'especie',
             'poster_url',
         ]
         labels = {
             'name': 'Título',
-            'release_year': 'Data de Lançamento',
+            'especie': 'Espécie',
             'poster_url': 'URL do Poster',
         }
 

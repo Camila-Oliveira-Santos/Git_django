@@ -1,5 +1,3 @@
-from django.shortcuts import render, get_object_or_404
-
 from django.http import HttpResponseRedirect
 from .temp_data import flower_data
 from django.urls import reverse, reverse_lazy
@@ -12,7 +10,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 
 def detail_flower(request, flower_id):
-    flower = get_object_or_404(Flower, pk=flower_id)
+#    flower = get_object_or_404(Flower, pk=flower_id)
     context = {'flower': flower_data[flower_id - 1]}
     return render(request, 'flowers/detail.html', context)
 
@@ -32,7 +30,7 @@ def update_flower(request, flower_id):
     form = FlowerForm(
             initial={
                 'name': flower.name,
-                'release_year': flower.release_year,
+                'especie': flower.especie,
                 'poster_url': flower.poster_url
             })
     flower.save()
@@ -105,7 +103,7 @@ def create_flower(request):
     if request.method == 'POST':
         flower_data.append({
             'name': request.POST['name'],
-            'release_year': request.POST['release_year'],
+            'especie': request.POST['especie'],
             'poster_url': request.POST['poster_url']
         })
         return HttpResponseRedirect(
@@ -125,7 +123,7 @@ def update_flower(request, flower_id):
         form = FlowerForm(request.POST)
         if form.is_valid():
             flower.name = form.cleaned_data['name']
-            flower.release_year = form.cleaned_data['release_year']
+            flower.especie = form.cleaned_data['especie']
             flower.poster_url = form.cleaned_data['poster_url']
             flower.save()
             return HttpResponseRedirect(
@@ -134,7 +132,7 @@ def update_flower(request, flower_id):
         form = FlowerForm(
             initial={
                 'name': flower.name,
-                'release_year': flower.release_year,
+                'especie': flower.especie,
                 'poster_url': flower.poster_url
             })
 
