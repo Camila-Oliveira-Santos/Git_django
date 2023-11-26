@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<h2>Todos os Filmes</h2>
+<h2>Todos as Flores</h2>
 {% if flower_list %}
 <section class="lista-de-cards">
   {% for flower in flower_list %}
   <article class="card">
-    <a href="{% url 'flowers:detail' forloop.counter %}"
+    <a href="{% url 'flowers:detail' flower.id %}"
       ><img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}"
     /></a>
     <p>{{ flower.name }} ({{ flower.release_year }})</p>
@@ -12,5 +12,5 @@
   {% endfor %}
 </section>
 {% else %}
-<p>Não foi encontrado nenhum filme.</p>
+<p>Não foi encontrada nenhuma flor.</p>
 {% endif %} {% endblock content %}
