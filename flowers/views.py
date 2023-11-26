@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from .temp_data import flower_data
 from django.urls import reverse, reverse_lazy
 
 from .models import Flower, Review, List, Provider 
