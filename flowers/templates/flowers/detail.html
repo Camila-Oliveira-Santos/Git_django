@@ -1,67 +1,13 @@
-{% extends 'base.html' %} 
-{% block title %}
-  {{ flower.name }} ({{flower.release_year }})
-{% endblock title %}
-{% block content %}
+{% extends 'base.html' %} {% block title %} {{ flower.name }} ({{
+flower.release_year }} {% endblock title %} {% block content %}
 <h2>Detalhes do Filme {{ flower.name }} ({{ flower.release_year }})</h2>
+
 <section class="dados-de-filme">
   <img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}" />
   <ul>
     <li>Nome: {{ flower.name }}</li>
     <li>Ano de Lançamento: {{ flower.release_year }}</li>
-    <li><a href="{% url 'flowers:update' flower.id %}">Editar</a></li>
-    <li><a href="{% url 'flowers:delete' flower.id %}">Apagar</a></li>
-    <li><a href="{% url 'flowers:detail' flower.id %}">Details</a></li>
   </ul>
-</section>
-<hr>
-
-<section>
-    <header>
-        <h3>Resenhas</h3>
-    </header>
-    <ul>
-        {% if flower.review_set.all %}
-            {% for review in flower.review_set.all %}
-                <figure>
-                    <blockquote>
-                        "{{ review.text }}"
-                    </blockquote>
-                    <figcaption>—{{ review.author }}</figcaption>
-                </figure>
-            {% endfor %}
-        {% else %}
-            <p>Ainda não existe nenhuma resenha para este filme.</p>
-        {% endif %}
-
-    </ul>
-    
-    <hr>
-        <li>Ano de Lançamento: {{ flower.release_year }} </li>
-        {% if flower.list_set.all %}
-            <li>Incluso nas listas: {{ flower.list_set.all|join:", " }} </li>
-        {% endif %}
-        <a href="{% url 'flowers:review' flower.pk %}"><button>Crie sua Resenha</button></a>
-
-<section class="dados-de-filme">
-    <img src="{{ flower.poster_url }}" alt="Poster do filme {{ flower.name}}">
-    <ul>
-        <li>Nome: {{ flower.name }}</li>
-        <li>Ano de Lançamento: {{ flower.release_year }} </li>
-        {% if flower.provider %}
-            <li>Disponibilidade de Streaming: {{ flower.provider.service }} </li>
-            {% if flower.provider.has_flat_price %}
-                <li>Preço: FLAT </li>
-            {% else %}
-                <li>Preço: R${{ flower.provider.price }} </li>
-            {% endif %}
-        {% endif %}
-        {% if flower.list_set.all %}
-           <li>Incluso nas listas: {{ flower.list_set.all|join:", " }} </li>
-        {% endif %}
-        <li><a href="{% url 'flowers:update' flower.id %}">Editar</a></li>
-        <li><a href="{% url 'flowers:delete' flower.id %}">Apagar</a></li>
-    </ul>
 </section>
 
 {% endblock content %}

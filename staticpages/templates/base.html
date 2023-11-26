@@ -10,17 +10,16 @@
     <title>
         {% block title %}{% endblock %} | Watch that film!
     </title>
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" /> 
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> 
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" /> <!-- adicione esta linha -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> <!-- adicione esta linha -->
 </head>
 
 <body>
     <header id="cabecalho-principal">
-        <a href="{% url 'index' %}"> <img src="{% static 'logo.svg' %}"> </a> 
+        <a href="{% url 'index' %}"> <img src="{% static 'logo.svg' %}"> </a> <!-- adicione esta linha -->
         <nav id="navegacao-principal">
             <ul>
-                <li><a href="{% url 'flowers:index' %}">Flores</a></li>
-                <li><a href="{% url 'flowers:lists' %}">Listas</a></li> 
+                <li><a href="{% url 'flowers:index' %}">Filmes</a></li>
                 <li><a href="{% url 'about' %}">Sobre</a></li>
             </ul>
         </nav>
