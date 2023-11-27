@@ -9,11 +9,13 @@ class FlowerForm(ModelForm):
             'name',
             'especie',
             'poster_url',
+            'curiosidade',
         ]
         labels = {
             'name': 'Título',
             'especie': 'Espécie',
             'poster_url': 'URL do Poster',
+            'curiosidade': 'Curiosodade',
         }
 
     def clean(self):

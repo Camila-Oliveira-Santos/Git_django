@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block title %} {{ flower.name }} ({{
-flower.especie }} {% endblock title %} {% block content %}
+flower.especie }}) {% endblock title %} {% block content %}
 <h2>Detalhes da Flor: {{ flower.name }} ({{ flower.especie }})</h2>
 
 <section class="dados-de-filme">
@@ -7,7 +7,7 @@ flower.especie }} {% endblock title %} {% block content %}
   <ul>
     <li>Nome: {{ flower.name }}</li>
     <li>Espécie: {{ flower.especie }}</li>
-    <li>Curiosodades: {{ flower.especie }}</li>
+    <li>Curiosodades: {{ flower.curiosidade }}</li>
   </ul>
 </section>
 

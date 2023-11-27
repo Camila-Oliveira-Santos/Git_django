@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'flowers:delete' flower.id %}" method="post">
+  {% csrf_token %}
+  <p>
+    Você tem certeza que deseja apagar a flor "{{ flower.name }} ({{
+    flower.especie }})"?
+  </p>
+  <button type="submit">Apagar</button>
+</form>
+{% endblock content %}

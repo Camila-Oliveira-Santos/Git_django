@@ -19,21 +19,44 @@ def list_flowers(request):
     return render(request, 'flowers/index.html', context)
 
 def create_flower(request):
-    flower_form = FlowerForm(request.POST)
-    provider_form = ProviderForm(request.POST)
-    flower = flower_form.save()
-    context = {'flower_form': flower_form}
+    if request.method == 'POST':
+        flower_data.append({
+            'name': request.POST['name'],
+            'especie': request.POST['especie'],
+            'poster_url': request.POST['poster_url'],
+            'curiosidade': request.POST['curiosidade'],
+        })
+        return HttpResponseRedirect(
+            reverse('flowers:detail', args=(len(flower_data), )))
+    else:
+        return render(request, 'flowers/create.html', {})
+        flower_form = FlowerForm()
+        provider_form = ProviderForm()
+    context = {'flower_form': flower_form, 'provider_form': provider_form}
     return render(request, 'flowers/create.html', context)
 
 def update_flower(request, flower_id):
     flower = get_object_or_404(Flower, pk=flower_id)
-    form = FlowerForm(
+
+    if request.method == "POST":
+        form = FlowerForm(request.POST)
+        if form.is_valid():
+            flower.name = form.cleaned_data['name'],
+            flower.especie = form.cleaned_data['especie'],
+            flower.poster_url = form.cleaned_data['poster_url'],
+            flower.curiosidade = form.cleaned_data['curiosidade'],
+            flower.save()
+            return HttpResponseRedirect(
+                reverse('flowers:detail', args=(flower.id, )))
+    else:
+        form = FlowerForm(
             initial={
                 'name': flower.name,
                 'especie': flower.especie,
-                'poster_url': flower.poster_url
+                'poster_url': flower.poster_url,
+                'curiosidade': flower.curiosidade
             })
-    flower.save()
+
     context = {'flower': flower, 'form': form}
     return render(request, 'flowers/update.html', context)
 
@@ -100,42 +123,22 @@ def search_flowers(request):
     return render(request, 'flowers/search.html', context)
 
 def create_flower(request):
-    if request.method == 'POST':
-        flower_data.append({
-            'name': request.POST['name'],
-            'especie': request.POST['especie'],
-            'poster_url': request.POST['poster_url']
-        })
-        return HttpResponseRedirect(
-            reverse('flowers:detail', args=(len(flower_data), )))
-    else:
-        return render(request, 'flowers/create.html', {})
-        flower_form = FlowerForm()
-        provider_form = ProviderForm()
-    context = {'flower_form': flower_form, 'provider_form': provider_form}
+    flower_form = FlowerForm(request.POST)
+    provider_form = ProviderForm(request.POST)
+    flower = flower_form.save()
+    context = {'flower_form': flower_form}
     return render(request, 'flowers/create.html', context)
-
 
 def update_flower(request, flower_id):
     flower = get_object_or_404(Flower, pk=flower_id)
-
-    if request.method == "POST":
-        form = FlowerForm(request.POST)
-        if form.is_valid():
-            flower.name = form.cleaned_data['name']
-            flower.especie = form.cleaned_data['especie']
-            flower.poster_url = form.cleaned_data['poster_url']
-            flower.save()
-            return HttpResponseRedirect(
-                reverse('flowers:detail', args=(flower.id, )))
-    else:
-        form = FlowerForm(
+    form = FlowerForm(
             initial={
                 'name': flower.name,
                 'especie': flower.especie,
-                'poster_url': flower.poster_url
+                'poster_url': flower.poster_url,
+                'curiosidade': flower.curiosidade
             })
-
+    flower.save()
     context = {'flower': flower, 'form': form}
     return render(request, 'flowers/update.html', context)
 

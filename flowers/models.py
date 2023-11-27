@@ -4,9 +4,11 @@ from django.conf import settings
 # Create your models here.
 class Flower(models.Model):
     name = models.CharField(max_length=255)
-    especie = models.IntegerField()
+    especie = models.CharField(max_length=255)
     poster_url = models.URLField(max_length=200, null=True)
     pub_date = models.DateTimeField(auto_now_add=True)
+    curiosidade = models.CharField(max_length=500)
+
 
     def __str__(self):
         return f'{self.name} ({self.especie})'
